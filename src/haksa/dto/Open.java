@@ -9,6 +9,14 @@ public class Open {
 	private int sub_year;
 	private int quarter;
 	private int start_time;
+	private int prof_num;
+	
+	public int getProf_num() {
+		return prof_num;
+	}
+	public void setProf_num(int prof_num) {
+		this.prof_num = prof_num;
+	}
 	public int getNum() {
 		return num;
 	}

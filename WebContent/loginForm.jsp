@@ -19,7 +19,7 @@
 <title>:: 로그인 - 치킨대학 ::</title>
 </head>
 <body>
-<form action="/haksaConstroller" name="frm" method="post">
+<form action="Member" name="frm" method="post">
 	<p>NUM: <input type="text" name="num"></p>
 	<p>NAME: <input type="text" name="name"></p>
 	<input type="button" onclick="login()" value="로그인">
