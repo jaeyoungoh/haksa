@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="mainStyle.css">
 <script type="text/javascript" src="httpRequest.js"></script>
 <script type="text/javascript">
 	function edit() {
@@ -97,15 +98,23 @@
 <title>::학사 관리 프로그램 Main::</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
+	
+	<p class="label_login">
 	<%=session.getAttribute("num")%>님 로그인 성공!
+	</p>
 	<br>
 	<form name=frm action="Member" method="post">
-		<input type="hidden" name="type" value=""> <input
-			type="hidden" name="num" value="<%=request.getAttribute("num")%>">
-		<input type="button" value="정보수정" onclick="edit()"> <input
-			type="button" value="로그아웃" onclick="logout()">
-	</form>
 
+		<table class="member">
+			<tr>
+				<td><input type="hidden" name="type" value=""> <input
+					type="hidden" name="num" value="<%=request.getAttribute("num")%>">
+					<input type="button" value="정보수정" onclick="edit()"> <input
+					type="button" value="로그아웃" onclick="logout()"></td>
+			</tr>
+		</table>
+	</form>
 	<input type="button" value="모든사용자" onclick="callAllMember()">
 	<p>
 		<span id="xmlValue"></span> <span id="JsonValue"></span><br/>
