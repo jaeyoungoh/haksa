@@ -1,6 +1,6 @@
 package haksa.dto;
 
-public class register {
+public class Register {
 	private int num;
 	private int subject_num;
 	private int stud_num;

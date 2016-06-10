@@ -1,4 +1,4 @@
-package conn;
+package haksa.conn;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

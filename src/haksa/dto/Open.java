@@ -1,6 +1,6 @@
 package haksa.dto;
 
-public class open {
+public class Open {
 	private int num;
 	private int subject_num;
 	private String room;
