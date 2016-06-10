@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+#bt_subject {
+	transform: translateX(-90%);
+	position: absolute;
+	left: 98%;
+	top: 27px;
+}
+
+hr {
+    width: 90%;
+    position: absolute;
+	left: 4%;
+	right: 50%;
+	
+}
+
+h2{
+	position: relative;
+    top: 15px;
+    left: 3%;
+
+}
+
+p.label_login{
+	position: absolute;
+    left: 80%;
+	
+	
+}
+table.member{
+	position: absolute;
+    top: 95px;
+    left: 79%;
+}
