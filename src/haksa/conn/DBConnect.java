@@ -9,7 +9,7 @@ public class DBConnect {
 	private static DBConnect db = new DBConnect();
 	private Connection conn = null;
 	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
-	String jdbc_url = "jdbc:oracle:thin:@192.168.14.31:1521:xe";
+	String jdbc_url = "jdbc:oracle:thin:@49.172.74.26:1521:xe";
 	
 	private DBConnect() {
 		try {
