@@ -21,14 +21,9 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public boolean login(int num, String name) {
+	public int login(int num, String name) {
 		
-		boolean flag = false;
-		if(name != null && name.equals(dao.select(num).getName()) ){
-			flag=true;
-			return flag;
-		}
-		return flag;
+		return dao.select(num).getType();
 	}
 
 	@Override
