@@ -48,14 +48,28 @@ public class Controller extends HttpServlet {
 		else if(type.equals("login")){
 			int num = Integer.parseInt(request.getParameter("num"));
 			String name = request.getParameter("name");
-			boolean chk = service.login(num, name);
-			if(chk){
+			int chk = 0;
+			chk = service.login(num, name);
+			
+			if(chk != 0){
 				HttpSession loginSession=request.getSession();
 				loginSession.setAttribute("num", num);
+				loginSession.setAttribute("type", chk);
+				loginSession.setAttribute("name", name);
+				
+				if(chk == 1){
+					request.setAttribute("mainCode", "staff");
+				}else if(chk == 2){
+					request.setAttribute("mainCode", "professor");
+				}else if(chk == 3){
+					request.setAttribute("mainCode", "student");
+				}
 				String url = "main.jsp";
 				move(request, response, url);
 			}else{
-				response.sendError(500);
+				String url = "loginForm.jsp";
+				request.setAttribute("error", "loginError");
+				move(request, response, url);
 			}
 
 		}
@@ -71,6 +85,7 @@ public class Controller extends HttpServlet {
 			service.editInfo(m);
 			request.setAttribute("num", num);
 			String url = "main.jsp";
+			request.setAttribute("mainCode", "professor");
 			move(request, response, url);
 		}
 		else if(type.equals("logout")){
@@ -95,7 +110,8 @@ public class Controller extends HttpServlet {
 			System.out.println(login);
 			Member m = service.getMember(login);
 			request.setAttribute("Member", m);
-			String url = "editInfo.jsp";
+			request.setAttribute("mainCode", "edit");
+			String url = "main.jsp";
 			move(request, response, url);
 		}
 		else if ( type.equals("checkId")){
