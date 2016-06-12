@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,33 +95,38 @@
 			}
 		memberInfo.innerHTML = htmlMessage;
 	}
+function mtype(){
+	var mtype = ${type};
+	var location_m_type = document.getElementById("m_type");
+	if(mtype == 1){
+		location_m_type.innerHTML = "교직원";
+	}else if(mtype == 2){
+		location_m_type.innerHTML = "교수";
+	}else if(mtype == 3){
+		location_m_type.innerHTML = "학생";
+	}
+}
+window.onload = function(){
+	mtype();
+}
+
 </script>
-<title>::학사 관리 프로그램 Main::</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
-	
-	<p class="label_login">
-	<%=session.getAttribute("num")%>님 로그인 성공!
-	</p>
-	<br>
-	<form name=frm action="Member" method="post">
-
-		<table class="member">
-			<tr>
-				<td><input type="hidden" name="type" value=""> <input
-					type="hidden" name="num" value="<%=request.getAttribute("num")%>">
-					<input type="button" value="정보수정" onclick="edit()"> <input
-					type="button" value="로그아웃" onclick="logout()"></td>
-			</tr>
-		</table>
-	</form>
-	<input type="button" value="모든사용자" onclick="callAllMember()">
-	<p>
-		<span id="xmlValue"></span> <span id="JsonValue"></span><br/>
-		<span id="memberInfo"></span>
-	</p>
-
-
+	<jsp:include page="header.jsp" />
+	<c:choose>
+		<c:when test="${mainCode eq 'edit'}">
+			<jsp:include page="editInfo.jsp" />
+		</c:when>
+		<c:when test="${mainCode eq 'professor'}">
+			<jsp:include page="OpenList.jsp" />
+		</c:when>
+		<c:when test="${mainCode eq 'student'}">
+			<jsp:include page="suGang.jsp" />
+		</c:when>
+		<c:when test="${mainCode eq 'staff'}">
+			<jsp:include page="createSubject.jsp" />
+		</c:when>
+	</c:choose>
 </body>
 </html>
